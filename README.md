@@ -5,6 +5,7 @@ Get started with Meteor, React, Redux, Webpack, and React-Router!
 Embrace the react-redux ecosystem while using meteor's awesome realtime magic
 
 A combination of
+
 1. [jedwards1211/meteor-webpack-react](https://github.com/jedwards1211/meteor-webpack-react)
 1. [davezuko/react-redux-starter-kit](https://github.com/davezuko/react-redux-starter-kit)
 
@@ -21,6 +22,11 @@ A combination of
 (below TODO)
 1. reselect
 1. immutable.js
+
+## Why
+
+The goal for this starter kit is to rely on Meteor as less as possible,
+and embrace the whole React ecosystem.
 
 ## Getting Started
 
