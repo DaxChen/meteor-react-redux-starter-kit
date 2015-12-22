@@ -1,0 +1,1 @@
+import './method_example';
