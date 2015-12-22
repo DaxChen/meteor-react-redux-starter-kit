@@ -1,5 +1,6 @@
 var path = require('path');
 var webpack = require('webpack');
+var cssnano = require('cssnano');
 
 module.exports = {
   context: __dirname,
@@ -21,10 +22,31 @@ module.exports = {
     loaders: [
       { test: /\.jsx?$/, loader: 'babel', exclude: /node_modules|lib/ },
       { test: /\.css$/, loader: 'style-loader!css-loader' },
-      { test: /\.less$/, loader: 'style-loader!css-loader!less-loader' },
+      {
+        test: /\.scss$/,
+        loaders: [
+          'style',
+          'css?sourceMap',
+          'postcss',
+          'sass?sourceMap',
+        ],
+      },
       { test: /\.(png|jpg)$/, loader: 'url-loader?limit=8192'}, // inline base64 URLs for <=8k images, direct URLs for the rest
     ],
   },
+  postcss: [
+    cssnano({
+      sourcemap: true,
+      autoprefixer: {
+        add: true,
+        remove: true,
+        browsers: ['last 2 versions'],
+      },
+      discardComments: {
+        removeAll: true,
+      },
+    }),
+  ],
   plugins: [
     new webpack.PrefetchPlugin('react'),
     new webpack.PrefetchPlugin('react/lib/ReactComponentBrowserEnvironment'),
