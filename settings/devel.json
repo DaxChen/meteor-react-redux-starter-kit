@@ -3,5 +3,12 @@
     "env": "DEVEL",
     "foo": "bar"
   },
-  "secret": "golf1234"
+  "google": {
+    "clientId": "your-clientId-for-localhost-xxxxxxxxxx.apps.googleusercontent.com",
+    "secret": "your-secret-for-localhost"
+  },
+  "facebook": {
+    "appId": "your-appId-for-localhost",
+    "secret": "your-secret-for-localhost"
+  }
 }

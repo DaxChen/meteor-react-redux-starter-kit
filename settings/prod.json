@@ -3,6 +3,12 @@
     "env": "PROD",
     "foo": "bar"
   },
-  "secret": "golf1234"
+  "google": {
+    "clientId": "your-clientId-for-production-xxxxxxxxxx.apps.googleusercontent.com",
+    "secret": "your-secret-for-production"
+  },
+  "facebook": {
+    "appId": "your-appId-for-production",
+    "secret": "your-secret-for-production"
+  }
 }
-

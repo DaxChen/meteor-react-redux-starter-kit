@@ -3,5 +3,12 @@
     "env": "STAGE",
     "foo": "bar"
   },
-  "secret": "golf1234"
+  "google": {
+    "clientId": "your-clientId-for-staging-server-xxxxxxxxxx.apps.googleusercontent.com",
+    "secret": "your-secret-for-staging-server"
+  },
+  "facebook": {
+    "appId": "your-appId-for-staging-server",
+    "secret": "your-secret-for-staging-server"
+  }
 }
