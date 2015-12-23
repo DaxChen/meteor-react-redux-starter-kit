@@ -4,7 +4,8 @@ import ReactDOM               from 'react-dom';
 import createBrowserHistory   from 'history/lib/createBrowserHistory';
 import { syncReduxAndRouter } from 'redux-simple-router';
 import Root                   from './containers/Root';
-import configureStore         from './store/configureStore';
+import configureStore         from './redux/configureStore';
+import {loadUser} from './redux/modules/auth';
 
 Accounts.ui.config({
   passwordSignupFields: 'USERNAME_ONLY',
@@ -35,4 +36,7 @@ Meteor.startup(() => {
   );
 
   ReactDOM.render(node, target);
+
+  // loadUser
+  store.dispatch(loadUser());
 });

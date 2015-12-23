@@ -1,12 +1,16 @@
-import React                 from 'react';
+import React from 'react';
 import { Route, IndexRoute } from 'react-router';
-import App            from '../containers/App';
-import Foo              from '../containers/Foo';
-import Bar             from '../containers/Bar';
+import CoreLayout from '../layouts/CoreLayout';
+import Landing from '../components/Landing';
+import Login from '../containers/Login';
+import About from '../components/About';
+import NotFound from '../components/NotFound';
 
 export default (
-  <Route        component={App} path="/">
-    <IndexRoute component={Foo} />
-    <Route      component={Bar}  path="/bar" />
+  <Route path="/" component={CoreLayout} >
+    <IndexRoute component={Landing} />
+    <Route path="login" component={Login} />
+    <Route path="about" component={About} />
+    <Route path="*" component={NotFound}/>
   </Route>
 );

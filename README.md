@@ -38,6 +38,19 @@ npm install
 npm start
 ```
 
+### structure
+
+[Ducks: Redux Reducer Bundles](https://github.com/erikras/ducks-modular-redux)
+
+### TODOs
+
+1. Google Login
+1. Facebook Login
+
+### Google Login
+
+https://github.com/sahat/hackathon-starter#obtaining-api-keys
+
 ### Redux-DevTools
 
 Press `ctrl+h` to show/hide Redux-DevTools, and `ctrl+q` to change it's position.
