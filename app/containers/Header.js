@@ -14,13 +14,17 @@ import IconMenu from 'material-ui/lib/menus/icon-menu'
 import MenuItem from 'material-ui/lib/menus/menu-item'
 import { logout } from '../redux/modules/auth'
 
-class Header extends Component {
+@connect(
+  state => ({ auth: state.auth }),
+  dispatch => bindActionCreators({logout}, dispatch))
+export default class Header extends Component {
   static propTypes = {
     auth: React.PropTypes.object.isRequired,
     logout: React.PropTypes.func.isRequired,
   }
 
   renderLoginProfile() {
+    console.log('[Header]: loggedIn: ' + this.props.auth.user)
     if (this.props.auth.user) {
       return (
         <IconMenu width={100} iconButtonElement={
@@ -33,11 +37,11 @@ class Header extends Component {
           <MenuItem primaryText="Profile" leftIcon={
             <FontIcon className="material-icons">people</FontIcon>
           } />
-          <MenuItem primaryText="Settings" leftIcon={
+        <MenuItem primaryText="Settings" leftIcon={
             <FontIcon className="material-icons">settings</FontIcon>
           } />
           <Divider />
-          <MenuItem primaryText="Sign out" onClick={this.props.logout()} leftIcon={
+          <MenuItem primaryText="Sign out" onClick={this.props.logout} leftIcon={
             <FontIcon className="material-icons">exit_to_app</FontIcon>
           } />
         </IconMenu>
@@ -65,12 +69,3 @@ class Header extends Component {
     )
   }
 }
-
-function mapStateToProps(state) {
-  return { auth: state.auth }
-}
-function mapDispatchToProps(dispatch) {
-  return { logout: bindActionCreators(logout, dispatch) }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(Header)
