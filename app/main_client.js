@@ -5,11 +5,10 @@ import createBrowserHistory from 'history/lib/createBrowserHistory'
 import { syncReduxAndRouter } from 'redux-simple-router'
 import Root from './containers/Root'
 import configureStore from './redux/configureStore'
-import { loadUser } from './redux/modules/auth'
+import { viewerChanged } from './redux/modules/auth'
+// import { user } from './meteor-redux'
 
-Accounts.ui.config({
-  passwordSignupFields: 'USERNAME_ONLY',
-})
+// TODO set these globals with webpack
 window.__DEBUG__ = true
 
 const injectTapEventPlugin = require('react-tap-event-plugin')
@@ -37,6 +36,12 @@ Meteor.startup(() => {
 
   ReactDOM.render(node, target)
 
-  // load user
-  store.dispatch(loadUser())
+  if (__DEBUG__) {
+    window.store = store
+  }
+
+  // auto update currentUser using skinnygeek1010:flux-helpers
+  trackViewer((newDocs) => {
+    store.dispatch(viewerChanged(newDocs))
+  })
 })
