@@ -1,28 +1,18 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import Header from '../components/Header';
-import '../styles/core.scss';
+import React from 'react'
+import Header from '../containers/Header'
 
-function mapStateToProps(state) {
-  return {
-    auth: state.auth,
-  };
+const CoreLayout = ({children}) => {
+  return (
+    <div>
+      <Header />
+      {children}
+    </div>
+  )
 }
 
-class CoreLayout extends Component {
-  static propTypes = {
-    children: React.PropTypes.element,
-    auth: React.PropTypes.object,
-  }
-
-  render() {
-    return (
-      <div>
-        <Header auth={this.props.auth} />
-        {this.props.children}
-      </div>
-    );
-  }
+CoreLayout.propTypes = {
+  children: React.PropTypes.element,
+  auth: React.PropTypes.object,
 }
 
-export default connect(mapStateToProps)(CoreLayout);
+export default CoreLayout

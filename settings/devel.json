@@ -4,11 +4,11 @@
     "foo": "bar"
   },
   "google": {
-    "clientId": "your-clientId-for-localhost-xxxxxxxxxx.apps.googleusercontent.com",
-    "secret": "your-secret-for-localhost"
+    "clientId": "112427994311-7tp5l72hfctjrlajd5dd751nn1iqm0fr.apps.googleusercontent.com",
+    "secret": "VXttMiFv8bmA0OVtGL8AMUgW"
   },
   "facebook": {
-    "appId": "your-appId-for-localhost",
-    "secret": "your-secret-for-localhost"
+    "appId": "899114126863033",
+    "secret": "7f928ec94149e480206f1534c749dcfe"
   }
 }

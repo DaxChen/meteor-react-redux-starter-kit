@@ -23,6 +23,7 @@
     "no-console": 0,
     "func-names": 0,
     "react/sort-comp": 0,
-    "comma-dangle": 1
+    "comma-dangle": 1,
+    "semi" : [2, "never"]
   }
 }

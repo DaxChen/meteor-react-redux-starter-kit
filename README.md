@@ -59,3 +59,5 @@ Press `ctrl+h` to show/hide Redux-DevTools, and `ctrl+q` to change it's position
 
 1. upgrade to Babel 6
 1. ...
+
+http://stackoverflow.com/questions/33643290/how-do-i-get-a-hold-of-the-store-dispatch-in-react-router-onenter
