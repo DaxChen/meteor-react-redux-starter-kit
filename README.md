@@ -7,6 +7,7 @@ Embrace the react-redux ecosystem while using meteor's awesome realtime magic
 The meteor and webpack integration settings are basically forked from [jedwards1211/meteor-webpack-react](https://github.com/jedwards1211/meteor-webpack-react)'s `webpack-meteor-tools` branch, definitely check out the README there before continuing.
 
 Redux store settings and project structure are inspired from these great repos
+
 1. [davezuko/react-redux-starter-kit](https://github.com/davezuko/react-redux-starter-kit)
 1. [erikras/react-redux-universal-hot-example](https://github.com/erikras/react-redux-universal-hot-example)
 1. [erikras/ducks-modular-redux](erikras/ducks-modular-redux): Redux folder structuring
