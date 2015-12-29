@@ -3,6 +3,12 @@
     "env": "PROD",
     "foo": "bar"
   },
-  "secret": "golf1234"
+  "google": {
+    "clientId": "112427994311-2a50jo0gfij46kbiumc6i690sjlvutqk.apps.googleusercontent.com",
+    "secret": "ssM_OxeZzXsjGQbjX5GFPN_K"
+  },
+  "facebook": {
+    "appId": "899109836863462",
+    "secret": "6cf661a11ea1297d18ea72be7c6c535e"
+  }
 }
-

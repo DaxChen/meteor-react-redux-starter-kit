@@ -3,5 +3,12 @@
     "env": "STAGE",
     "foo": "bar"
   },
-  "secret": "golf1234"
+  "google": {
+    "clientId": "112427994311-pasmhqtscugd0kqst912q2qmviioogq0.apps.googleusercontent.com",
+    "secret": "hk6vnGfp6f0eXaGZJkPE9cXT"
+  },
+  "facebook": {
+    "appId": "899115303529582",
+    "secret": "96f432f1c1b3b153bf3c8518e4d8bfc3"
+  }
 }
