@@ -169,6 +169,15 @@ export default class Login extends Component {
           </Link>
         </Col>
         </Row>
+
+        {this.props.auth.needLoginMsg &&
+          <Row>
+          <Col md={6} mdOffset={3}>
+            <div className="h2 text-center">You need to login to continue...</div>
+          </Col>
+          </Row>
+        }
+
         <Row>
         <Col md={6} mdOffset={3}>
           <Card>

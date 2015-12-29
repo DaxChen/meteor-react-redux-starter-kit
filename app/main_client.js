@@ -26,6 +26,14 @@ Meteor.startup(() => {
 
   syncReduxAndRouter(history, store)
 
+  // auto update currentUser using skinnygeek1010:flux-helpers
+  trackViewer((newDocs) => {
+    store.dispatch(viewerChanged(newDocs))
+  })
+  // dispatch once
+  // console.log('manual call viewerChanged')
+  store.dispatch(viewerChanged(Meteor.user()))
+
   const node = (
     <Root
       history={history}
@@ -39,9 +47,4 @@ Meteor.startup(() => {
   if (__DEBUG__) {
     window.store = store
   }
-
-  // auto update currentUser using skinnygeek1010:flux-helpers
-  trackViewer((newDocs) => {
-    store.dispatch(viewerChanged(newDocs))
-  })
 })

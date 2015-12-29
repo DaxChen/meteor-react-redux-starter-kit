@@ -1,22 +1,18 @@
-// uses "Ducks: Redux Reducer Bundles", check out:
-// https://github.com/erikras/ducks-modular-redux
-// on more how to structure your reducers
+import { extend } from 'lodash'
+import { replacePath } from 'redux-simple-router'
+
+/**
+ * uses "Ducks: Redux Reducer Bundles", check out:
+ * https://github.com/erikras/ducks-modular-redux
+ * on more how to structure your reducers
+ */
 const VIEWER_CHANGED = 'my-app/auth/VIEWER_CHANGED'
-
-// const LOGGING_IN = 'my-app/auth/LOGGING_IN'
-// const LOGGED_IN = 'my-app/auth/LOGGED_IN'
 const LOGIN_ERROR = 'my-app/auth/LOGIN_ERROR'
-
-// const LOGGING_OUT = 'my-app/auth/LOGGING_OUT'
-// const LOGGED_OUT = 'my-app/auth/LOGGED_OUT'
 const LOGOUT_ERROR = 'my-app/auth/LOGOUT_ERROR'
-
-// const SIGN_UP_BEGIN = ''
-// const SIGN_UP_SUCCESS = ''
-const SIGN_UP_ERROR = ''
+const SIGN_UP_ERROR = 'my-app/auth/SIGN_UP_ERROR'
+const SHOW_NEED_LOGIN_MSG = 'my-app/auth/SHOW_NEED_LOGIN_MSG'
 
 // helper to *copy* old state and merge new data with it
-import { extend } from 'lodash'
 function merge(oldState, newState) {
   return extend({}, oldState, newState)
 }
@@ -24,9 +20,8 @@ function merge(oldState, newState) {
 
 const initialState = {
   user: null,
-  errMessage: null,
-  // loggingIn: false,
-  // loggedIn: false,
+  errMsg: null,
+  needLoginMsg: false,
 }
 
 export default function reducer(state = initialState, action) {
@@ -34,18 +29,22 @@ export default function reducer(state = initialState, action) {
   case VIEWER_CHANGED:
     return merge(state, {
       user: action.user,
-      errMessage: null,
+      errMsg: null,
+      needLoginMsg: false,
     })
   case LOGIN_ERROR:
-    return merge(state, { errMessage: action.err })
-
+  case LOGOUT_ERROR:
+  case SIGN_UP_ERROR:
+    return merge(state, { errMsg: action.err })
+  case SHOW_NEED_LOGIN_MSG:
+    return merge(state, { needLoginMsg: true })
   default:
     return state
   }
 }
 
 export function viewerChanged(newDocs) {
-  // console.log(Meteor.user())
+  // console.log('viewerChanged')
   return {
     type: VIEWER_CHANGED,
     user: newDocs,
@@ -106,17 +105,23 @@ export function logoutError(err) {
 }
 
 export function logout() {
-  // console.log('logout action called')
   return dispatch => {
-    // dispatch(loggingOut())
-    // console.log('now loggingOut...')
     Meteor.logout(err => {
       if (err) {
         alert('Error while logging out: ' + err.message)
         dispatch(logoutError(err))
-      // } else {
-        // console.log('logout success!!')
-      //   dispatch(loggedOut())
+      }
+    })
+  }
+}
+
+export function logoutAndRedirectHome() {
+  return dispatch => {
+    Meteor.logout(err => {
+      if (err) {
+        dispatch(logoutError(err))
+      } else {
+        dispatch(replacePath('/'))
       }
     })
   }
@@ -138,5 +143,11 @@ export function signUpWithPassword({username, email, password}) {
       //   dispatch()
       }
     })
+  }
+}
+
+export function showNeedLoginMsg() {
+  return {
+    type: SHOW_NEED_LOGIN_MSG,
   }
 }
